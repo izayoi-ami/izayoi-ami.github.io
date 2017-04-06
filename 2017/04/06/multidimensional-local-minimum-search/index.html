@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <title>Multidimensional local minimum search &middot; Ami&#39;s Blog</title>
+    <meta name="generator" content="Hugo 0.20-DEV" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Ami Kai-Chiu Wu">
+    
+      <meta name="description" content="">
+    
+    
+    <link rel="canonical" href="https://blog.ami.world/2017/04/06/multidimensional-local-minimum-search/"/>
+    <link rel="icon" href="https://blog.ami.world/favicon.ico">
+    <link rel="apple-touch-icon" href="https://blog.ami.world/apple-touch-icon.png"/>
+    <link rel="stylesheet" href="https://blog.ami.world/css/style.css">
+    <link rel="stylesheet" href="https://blog.ami.world/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://blog.ami.world/css/monokai.css">
+    <link rel="stylesheet" href="https://blog.ami.world/fancybox/jquery.fancybox.css">
+    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+    <meta property="og:title" content="Multidimensional local minimum search" />
+<meta property="og:description" content="An element in a multi-dimensional array is said to be a local minimum if it is greater -than- none of its neighbours.
+In the one-dimensional case, a logarithmic solution is based on bisection (and advancing to the greater than the middle half).
+2-dimensional Let $A$ be a $N\times N$ matrix. Can one locate a local minimum within linear time?
+The idea is to consider bisection and boundary search. First, locate the midpoint, which then divide the matrix into 4 sub-regions." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.ami.world/2017/04/06/multidimensional-local-minimum-search/" />
+
+
+
+<meta property="article:published_time" content="2017-04-06T20:10:57&#43;03:00"/>
+<meta property="article:modified_time" content="2017-04-06T20:10:57&#43;03:00"/>
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+<meta itemprop="name" content="Multidimensional local minimum search">
+<meta itemprop="description" content="An element in a multi-dimensional array is said to be a local minimum if it is greater -than- none of its neighbours.
+In the one-dimensional case, a logarithmic solution is based on bisection (and advancing to the greater than the middle half).
+2-dimensional Let $A$ be a $N\times N$ matrix. Can one locate a local minimum within linear time?
+The idea is to consider bisection and boundary search. First, locate the midpoint, which then divide the matrix into 4 sub-regions.">
+
+
+<meta itemprop="dateModified" content="2017-04-06T20:10:57&#43;03:00" />
+<meta itemprop="wordCount" content="203">
+
+
+
+<meta itemprop="keywords" content="programming,divide-and-conquer,python," />
+
+    
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="Multidimensional local minimum search"/>
+<meta name="twitter:title" content="Multidimensional local minimum search"/>
+<meta name="twitter:description" content="An element in a multi-dimensional array is said to be a local minimum if it is greater -than- none of its neighbours.
+In the one-dimensional case, a logarithmic solution is based on bisection (and advancing to the greater than the middle half).
+2-dimensional Let $A$ be a $N\times N$ matrix. Can one locate a local minimum within linear time?
+The idea is to consider bisection and boundary search. First, locate the midpoint, which then divide the matrix into 4 sub-regions."/>
+<meta name="twitter:site" content="@izayoi_ami"/>
+
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+
+<div id="container">
+	<header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="https://blog.ami.world/" id="logo">
+          
+          <i class="logo" style="background-image: url('https://blog.ami.world/css/images/ami.png')"></i>
+          
+          <span class="site-title">Ami&#39;s Blog</span>
+      </a>
+      <nav id="main-nav">
+          
+          
+          <a class="main-nav-link" href="https://blog.ami.world/">Home</a>
+          
+          
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          <a class="main-nav-link" href="https://blog.ami.world/tags/">Tags</a>
+          
+          
+          
+          <a class="main-nav-link" href="https://blog.ami.world/categories/">Categories</a>
+          
+          
+      </nav>
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="https://blog.ami.world/css/images/avatar.jpg"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+              <input type="search" name="q" class="search-form-input" placeholder="Search">
+              <button type="submit" class="search-form-submit">
+              </button>
+              <input type="hidden" name="sitesearch" value="https://blog.ami.world/" />
+         </form>
+        </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tbody>
+          <tr>
+          
+          
+          <td><a class="main-nav-link" href="https://blog.ami.world/">Home</a></td>
+          
+          
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          <td><a class="main-nav-link" href="https://blog.ami.world/tags/">Tags</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="https://blog.ami.world/categories/">Categories</a></td>
+          
+          
+          <td>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+          <input type="search" name="q" class="search-form-input" placeholder="Search">
+          <input type="hidden" name="sitesearch" value="https://blog.ami.world/" />
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</header>
+
+   	
+   	<div class="outer">
+   		
+	    <aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="https://blog.ami.world/css/images/avatar.jpg">
+      <h2 id="name">Ami Kai-Chiu Wu</h2>
+      <h3 id="title">Programmer - Researcher &amp; Doctoral Student</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Finland</span>
+      
+          <a id="follow" href="https://github.com/izayoi-ami">
+              Follow
+          </a>
+      
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        1
+        <span>Posts</span>
+      </div>
+      <div class="article-info-block">
+        
+          2
+        
+        <span>
+            Tags
+        </span>
+      </div>
+    </div>
+    <div class="profile-block social-links">
+      <table>
+        <tr>
+          
+<td><a href="//github.com/izayoi-ami" target="_blank" title="GitHub"><i class="fa fa-github"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//twitter.com/izayoi_ami" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></td>
+
+
+          <td><a href="https://blog.ami.world/index.xml" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</aside>
+
+	    
+
+	    
+<section id="main">
+
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            
+
+            <header class="article-header">
+    <a href="https://blog.ami.world/2017/04/06/multidimensional-local-minimum-search/">
+    <h1 class="article-title" itemprop="name">
+        Multidimensional local minimum search
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2017-04-06 20:10:57 &#43;0300 EEST" itemprop="datePublished">Thursday - 6 Apr, 2017 at 20:10</time>
+            &middot;
+            203
+            words
+            &middot;
+            1
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="https://blog.ami.world/categories/programming">programming</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="https://blog.ami.world/tags/python">python</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://blog.ami.world/tags/divide-and-conquer">divide and conquer</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                
+
+<p>An element in a multi-dimensional array is said to be a <em>local minimum</em>
+if it is greater -than- none of its neighbours.</p>
+
+<p>In the one-dimensional case, a logarithmic solution is based on bisection
+(and advancing to the greater than the middle half).</p>
+
+<h2 id="2-dimensional">2-dimensional</h2>
+
+<p>Let $A$ be a $N\times N$ matrix. Can one locate a local minimum
+within linear time?</p>
+
+<p>The idea is to consider bisection and boundary search.
+First, locate the midpoint, which then divide the matrix into 4 sub-regions.
+Compute the <strong>minimum</strong> among the boundaries of these sub-regions.
+So, basically, we have three rows (the top, middle and the bottom) and three columns (left, middle and right) to consider.</p>
+
+<ol>
+<li>The minimum happens to be a local minimum, done.</li>
+<li>Otherwise, proceeds to the better region (one that contains a smaller neighbour).
+
+<ul>
+<li>This sub-region has size reduced by half.</li>
+</ul></li>
+</ol>
+
+<p>At the $k$-th time, we query at most $6\times\text{region side}$ elements.
+This gives an $O(N)$ algorithm.</p>
+
+<h2 id="n-dimensional">$n$-dimensional</h2>
+
+<p>One can generalized the above algorithm to $n$-dimensional array. Similar analysis shows tthat the runtime is $O(N^{n-1})$. Namely, we can just query a hyperplane to look for local minimum instead of the whole space.</p>
+
+<h2 id="python-code">Python Code</h2>
+
+<p>A demostrational code for the search process is written with numpy multidimension-array.</p>
+
+<script src="//gist.github.com/izayoi-ami/6e49a92a05652c3e589573c0eb318226.js"></script>
+
+            </div>
+            <footer class="article-footer">
+    <a data-url="https://blog.ami.world/2017/04/06/multidimensional-local-minimum-search/" data-id="54d1f606c4a78bb3cb4752c4c706d531" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="https://blog.ami.world/2017/04/06/multidimensional-local-minimum-search/#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+
+        
+
+    </article>
+
+    
+    <section id="comments">
+        <div id="disqus_thread">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'izayoi_ami';
+    var disqus_identifier = 'https:\/\/blog.ami.world\/2017\/04\/06\/multidimensional-local-minimum-search\/';
+    var disqus_title = 'Multidimensional local minimum search';
+    var disqus_url = 'https:\/\/blog.ami.world\/2017\/04\/06\/multidimensional-local-minimum-search\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+    </section>
+    
+</section>
+
+
+	    
+	    <aside id="sidebar">
+    
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Recents
+    </h3>
+    <div class="widget">
+        <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://blog.ami.world/2017/04/06/multidimensional-local-minimum-search/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://blog.ami.world/categories/programming">
+                        programming
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://blog.ami.world/2017/04/06/multidimensional-local-minimum-search/" class="title">Multidimensional local minimum search</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-04-06 20:10:57 &#43;0300 EEST" itemprop="datePublished">Thursday - 6 Apr, 2017 at 20:10</time>
+                    </p>
+                </div>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://blog.ami.world/categories/programming">
+                    programming
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tags
+    </h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://blog.ami.world/tags/divide-and-conquer">
+                    divide-and-conquer
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://blog.ami.world/tags/python">
+                    python
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tag cloud
+    </h3>
+    <div class="widget tagcloud">
+        
+        
+        <a href="https://blog.ami.world/tags/divide-and-conquer" style="font-size: 12px;">divide-and-conquer</a>
+        
+        
+        <a href="https://blog.ami.world/tags/python" style="font-size: 12px;">python</a>
+        
+    </div>
+</div>
+
+
+
+
+
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+	    
+	</div>
+</div>
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017
+      Powered by <a href="//gohugo.io">Hugo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>.
+    </div>
+  </div>
+</footer>
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-96914805-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+<script src="https://blog.ami.world/fancybox/jquery.fancybox.pack.js"></script>
+<script src="https://blog.ami.world/js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+</body>
+</html>
