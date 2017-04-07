@@ -30,7 +30,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-04-06T20:10:57&#43;03:00"/>
+<meta property="og:updated_time" content="2017-04-07T01:14:46&#43;03:00"/>
 
 
 
@@ -49,6 +49,9 @@
 
     
     
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css">
+
+
 
     
 
@@ -165,7 +168,7 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        1
+        2
         <span>Posts</span>
       </div>
       <div class="article-info-block">
@@ -252,6 +255,135 @@
             </a>
 
             <header class="article-header">
+    <a href="https://izayoi-ami.github.io/2017/04/07/test/">
+    <h1 class="article-title" itemprop="name">
+        test
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2017-04-07 01:14:46 &#43;0300 EEST" itemprop="datePublished">Friday - 7 Apr, 2017 at 01:14</time>
+            &middot;
+            7
+            words
+            &middot;
+            1
+            minute read
+        </div>
+        
+        
+            
+            
+        
+
+        
+            
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    Hii Auntie
+$$Hi, this is a $n$-the$$
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="https://izayoi-ami.github.io/2017/04/07/test/">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="https://izayoi-ami.github.io/2017/04/07/test/" data-id="2428ec7a948d62d1e37f65fbab8a7988" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="https://izayoi-ami.github.io/2017/04/07/test/#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            
+            </a>
+
+            <header class="article-header">
     <a href="https://izayoi-ami.github.io/2017/04/06/multidimensional-local-minimum-search/">
     <h1 class="article-title" itemprop="name">
         Multidimensional local minimum search
@@ -264,10 +396,10 @@
             <i class="fa fa-calendar"></i>
             <time datetime="2017-04-06 20:10:57 &#43;0300 EEST" itemprop="datePublished">Thursday - 6 Apr, 2017 at 20:10</time>
             &middot;
-            203
+            301
             words
             &middot;
-            1
+            2
             minute read
         </div>
         
@@ -309,7 +441,7 @@
                 <p>
                     An element in a multi-dimensional array is said to be a local minimum if it is greater -than- none of its neighbours.
 In the one-dimensional case, a logarithmic solution is based on bisection (and advancing to the greater than the middle half).
-2-dimensional Let $A$ be a $N\times N$ matrix. Can one locate a local minimum within linear time?
+2-dimensional Let (A) be a (N\times N) matrix. Can one locate a local minimum within linear time?
 The idea is to consider bisection and boundary search. First, locate the midpoint, which then divide the matrix into 4 sub-regions.
                     <br>
                 </p>
@@ -320,7 +452,7 @@ The idea is to consider bisection and boundary search. First, locate the midpoin
                 </p>
             </div>
             <footer class="article-footer">
-    <a data-url="https://izayoi-ami.github.io/2017/04/06/multidimensional-local-minimum-search/" data-id="54d1f606c4a78bb3cb4752c4c706d531" class="article-share-link">
+    <a data-url="https://izayoi-ami.github.io/2017/04/06/multidimensional-local-minimum-search/" data-id="c7b94cdc7a64bc45e6d3df935a642ea6" class="article-share-link">
         <i class="fa fa-share"></i>
         Share
     </a>
@@ -415,6 +547,25 @@ The idea is to consider bisection and boundary search. First, locate the midpoin
     </h3>
     <div class="widget">
         <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://izayoi-ami.github.io/2017/04/07/test/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    
+                    <p class="item-title"><a href="https://izayoi-ami.github.io/2017/04/07/test/" class="title">test</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-04-07 01:14:46 &#43;0300 EEST" itemprop="datePublished">Friday - 7 Apr, 2017 at 01:14</time>
+                    </p>
+                </div>
+            </li>
             
             <li>
                 <div class="item-thumbnail">
@@ -559,13 +710,13 @@ ga('send', 'pageview');
 <script>hljs.initHighlightingOnLoad();</script>
 
 
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {
-    inlineMath: [['$','$'], ['\\(','\\)']]}
-  });
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha384-dq1/gEHSxPZQ7DdrM82ID4YVol9BYyU7GbWlIwnwyPzotpoc57wDw/guX8EaYGPx" crossorigin="anonymous"></script>
+<script>
+  renderMathInElement(document.body);
 </script>
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
 
