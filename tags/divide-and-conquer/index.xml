@@ -7,17 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
-    <lastBuildDate>Thu, 06 Apr 2017 20:10:57 +0300</lastBuildDate>
+    <lastBuildDate>Fri, 07 Apr 2017 10:10:57 +0300</lastBuildDate>
     
 	<atom:link href="https://izayoi-ami.github.io/tags/divide-and-conquer/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Multidimensional local minimum search</title>
-      <link>https://izayoi-ami.github.io/2017/04/06/multidimensional-local-minimum-search/</link>
-      <pubDate>Thu, 06 Apr 2017 20:10:57 +0300</pubDate>
+      <link>https://izayoi-ami.github.io/2017/04/07/multidimensional-local-minimum-search/</link>
+      <pubDate>Fri, 07 Apr 2017 10:10:57 +0300</pubDate>
       
-      <guid>https://izayoi-ami.github.io/2017/04/06/multidimensional-local-minimum-search/</guid>
+      <guid>https://izayoi-ami.github.io/2017/04/07/multidimensional-local-minimum-search/</guid>
       <description>An element in a multi-dimensional array is said to be a local minimum if it is greater -than- none of its neighbours.
 In the one-dimensional case, a logarithmic solution is based on bisection (and advancing to the greater than the middle half).
 2-dimensional Let \(A\) be a \(N\times N\) matrix. Can one locate a local minimum within linear time?
