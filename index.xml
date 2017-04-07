@@ -24,15 +24,5 @@ In the one-dimensional case, a logarithmic solution is based on bisection (and a
 The idea is to consider bisection and boundary search. First, locate the midpoint, which then divide the matrix into 4 sub-regions.</description>
     </item>
     
-    <item>
-      <title>test</title>
-      <link>https://izayoi-ami.github.io/2017/04/07/test/</link>
-      <pubDate>Fri, 07 Apr 2017 01:14:46 +0300</pubDate>
-      
-      <guid>https://izayoi-ami.github.io/2017/04/07/test/</guid>
-      <description>Hii Auntie
-$$Hi, this is a $n$-the$$</description>
-    </item>
-    
   </channel>
 </rss>
