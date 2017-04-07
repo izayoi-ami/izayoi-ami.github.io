@@ -30,7 +30,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-04-07T10:10:57&#43;03:00"/>
+<meta property="og:updated_time" content="2017-04-08T01:51:48&#43;03:00"/>
 
 
 
@@ -168,7 +168,7 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        1
+        2
         <span>Posts</span>
       </div>
       <div class="article-info-block">
@@ -255,6 +255,145 @@
             </a>
 
             <header class="article-header">
+    <a href="https://izayoi-ami.github.io/2017/04/08/second-maximum/minimum-tournament-tree/">
+    <h1 class="article-title" itemprop="name">
+        Second maximum/minimum tournament tree
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2017-04-08 01:51:48 &#43;0300 EEST" itemprop="datePublished">Saturday - 8 Apr, 2017 at 01:51</time>
+            &middot;
+            90
+            words
+            &middot;
+            1
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="https://izayoi-ami.github.io/categories/programming">programming</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    Given an array of \(N\) elements, return the second maximum/minimum elements using minimum number of comparison. A standard way for this task is to apply a tree and keep track of a list of compared items.
+However, it is important to realize that this optimal is achieved only when the elements are distinct. Otherwise, one can end up comparing an extra half of the whole array.
+For example, to locate the second minimum of the following array:
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="https://izayoi-ami.github.io/2017/04/08/second-maximum/minimum-tournament-tree/">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="https://izayoi-ami.github.io/2017/04/08/second-maximum/minimum-tournament-tree/" data-id="a304a624fef6b146fc194dfc60c8c285" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="https://izayoi-ami.github.io/2017/04/08/second-maximum/minimum-tournament-tree/#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            
+            </a>
+
+            <header class="article-header">
     <a href="https://izayoi-ami.github.io/2017/04/07/multidimensional-local-minimum-search/">
     <h1 class="article-title" itemprop="name">
         Multidimensional local minimum search
@@ -312,7 +451,7 @@
                 <p>
                     An element in a multi-dimensional array is said to be a local minimum if it is greater -than- none of its neighbours.
 In the one-dimensional case, a logarithmic solution is based on bisection (and advancing to the greater than the middle half).
-2-dimensional Let (A) be a (N\times N) matrix. Can one locate a local minimum within linear time?
+2-dimensional Let \(A\) be a \(N\times N\) matrix. Can one locate a local minimum within linear time?
 The idea is to consider bisection and boundary search. First, locate the midpoint, which then divide the matrix into 4 sub-regions.
                     <br>
                 </p>
@@ -421,6 +560,32 @@ The idea is to consider bisection and boundary search. First, locate the midpoin
             
             <li>
                 <div class="item-thumbnail">
+                    <a href="https://izayoi-ami.github.io/2017/04/08/second-maximum/minimum-tournament-tree/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://izayoi-ami.github.io/categories/programming">
+                        programming
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://izayoi-ami.github.io/2017/04/08/second-maximum/minimum-tournament-tree/" class="title">Second maximum/minimum tournament tree</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-04-08 01:51:48 &#43;0300 EEST" itemprop="datePublished">Saturday - 8 Apr, 2017 at 01:51</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
                     <a href="https://izayoi-ami.github.io/2017/04/07/multidimensional-local-minimum-search/" class="thumbnail">
                     
                         <span class="thumbnail-image thumbnail-none"></span>
@@ -463,7 +628,7 @@ The idea is to consider bisection and boundary search. First, locate the midpoin
                 <a class="category-list-link" href="https://izayoi-ami.github.io/categories/programming">
                     programming
                 </a>
-                <span class="category-list-count">1</span>
+                <span class="category-list-count">2</span>
             </li>
             
         </ul>

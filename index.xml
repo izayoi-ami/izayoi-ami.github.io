@@ -7,10 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
-    <lastBuildDate>Fri, 07 Apr 2017 10:10:57 +0300</lastBuildDate>
+    <lastBuildDate>Sat, 08 Apr 2017 01:51:48 +0300</lastBuildDate>
     
 	<atom:link href="https://izayoi-ami.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Second maximum/minimum tournament tree</title>
+      <link>https://izayoi-ami.github.io/2017/04/08/second-maximum/minimum-tournament-tree/</link>
+      <pubDate>Sat, 08 Apr 2017 01:51:48 +0300</pubDate>
+      
+      <guid>https://izayoi-ami.github.io/2017/04/08/second-maximum/minimum-tournament-tree/</guid>
+      <description>Given an array of \(N\) elements, return the second maximum/minimum elements using minimum number of comparison. A standard way for this task is to apply a tree and keep track of a list of compared items.
+However, it is important to realize that this optimal is achieved only when the elements are distinct. Otherwise, one can end up comparing an extra half of the whole array.
+For example, to locate the second minimum of the following array:</description>
+    </item>
     
     <item>
       <title>Multidimensional local minimum search</title>
